@@ -1,3 +1,5 @@
+; $Id$
+
 _Hyperlink 			proto :DWORD,:DWORD,:DWORD,:DWORD
 InitHyperLinkClass 	proto
 
