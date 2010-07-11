@@ -1,3 +1,5 @@
+; $Id$
+
 ;DATE                  Description                               			Author. 
 ;------------------------------------------------------------------------------------------------
 ; 11/07/2010		Fix a bug in the function AnteriorNodoListaDoble      Guan de Dio

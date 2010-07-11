@@ -1,3 +1,5 @@
+; $Id$
+
 ;Fichero con ciertas funciones genericas 
 include comdlg32.inc
 include gdi32.inc
