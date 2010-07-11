@@ -1,4 +1,6 @@
-
+;DATE                  Description                               			Author. 
+;------------------------------------------------------------------------------------------------
+; 11/07/2010		Fix a bug in the function AnteriorNodoListaDoble      Guan de Dio
 
 NODOLISTADOBLE STRUCT
     LpItem      DWORD ?
@@ -257,6 +259,8 @@ SiguienteNodoListaDoble PROC Lista:DWORD, Pos:DWORD
 		.else
 			xor eax,eax
 		.endif
+	.else
+		xor eax,eax
 	.endif	
 	ret
 
@@ -266,8 +270,8 @@ AnteriorNodoListaDoble PROC Lista:DWORD, Pos:DWORD
 	
 	push ebx
 	.if Lista != NULL
-		mov ebx,Lista
-		.if Pos != ebx
+		mov ebx,Pos ; ebx has to take the value of Pos not Lista
+		.if Lista != ebx   ; Changed Pos for Lista due to the change of ebx value.
 		
 Anterior_otro:
 			assume ebx: ptr NODOLISTADOBLE 
@@ -277,6 +281,8 @@ Anterior_otro:
 		.else
 			xor eax,eax
 		.endif
+	.else
+		xor eax,eax
 	.endif
 	pop ebx
 	ret
