@@ -1,3 +1,4 @@
+; $Id$
 ;
 ; Hyperlink stuffs from: http://members.a1.net/ranmasaotome/masm32/Hyperlink.zip
 ;
