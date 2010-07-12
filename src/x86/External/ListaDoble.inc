@@ -1,9 +1,3 @@
-; $Id: ListaDoble.inc 35 2010-07-11 22:31:57Z nahuelriva $
-
-;DATE                  Description                               			Author. 
-;------------------------------------------------------------------------------------------------
-; 11/07/2010		Fix a bug in the function AnteriorNodoListaDoble      Guan de Dio
-
 NODOLISTADOBLE STRUCT
     LpItem      DWORD ?
     LpNextNode  DWORD ?
@@ -559,6 +553,7 @@ ListaAFicheroListaDoble PROC Lista:DWORD,lpFile:DWORD,SobreEscribir:DWORD
 		mov lpItem,eax
 		.if eax == 0
 			invoke MessageBox,NULL,addr szErrorReservandoMemoria,NULL,MB_OK or MB_ICONERROR
+			invoke CloseHandle,HFile
 			xor eax,eax
 			ret
 		.endif
@@ -665,6 +660,11 @@ OrdenarListaDoble proc Lista:DWORD,DirOrd:DWORD,Fun:DWORD
 	LOCAL  pItem1:DWORD
 	LOCAL  pItem2:DWORD
 
+	.if Lista == 0 || Fun == 0
+		xor eax,eax
+		ret
+	.endif
+	
 	invoke UltimoNodoListaDoble,Lista
 	mov PosUlt,eax
 	
