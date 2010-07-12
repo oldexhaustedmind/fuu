@@ -1,4 +1,4 @@
-
+; $Id$
 
 NODOLISTADOBLE64 STRUCT
     LpItem      QWORD ?

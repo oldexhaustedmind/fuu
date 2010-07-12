@@ -1,3 +1,5 @@
+; $Id$
+
 IFNDEF __Funciones64__
 __Funciones64__	equ 1
 
