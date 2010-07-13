@@ -218,16 +218,22 @@ WndProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 					invoke EnableWindow, hUnpackButton, TRUE
 					invoke SendMessage, hListBox, LB_RESETCONTENT, NULL, NULL
 					
-					invoke IsDlgButtonChecked, hWin, RealignPECheckBox
-					.if eax != TRUE
+					invoke IsDlgButtonChecke<d, hWin, RealignPECheckBox
+					.if eax == BST_CHECKED
+						mov eax, dword ptr[OptionsArray]
+						mov dword ptr[eax], 1
+					.else
 						mov eax, dword ptr[OptionsArray]
 						mov dword ptr[eax], 0
-					.endif 
+					.endif
 					
 					invoke IsDlgButtonChecked, hWin, CopyOverlayDataBt
-					.if eax != TRUE
+					.if eax == BST_CHECKED
 						mov eax, dword ptr[OptionsArray+4]
-						mov dword ptr[eax],0
+						mov dword ptr[eax], 1
+					.else
+						mov eax, dword ptr[OptionsArray+4]
+						mov dword ptr[eax], 0
 					.endif
 					
 					mov eax, current_selection
