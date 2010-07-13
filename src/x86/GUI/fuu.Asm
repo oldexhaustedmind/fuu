@@ -218,7 +218,7 @@ WndProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 					invoke EnableWindow, hUnpackButton, TRUE
 					invoke SendMessage, hListBox, LB_RESETCONTENT, NULL, NULL
 					
-					invoke IsDlgButtonChecke<d, hWin, RealignPECheckBox
+					invoke IsDlgButtonChecked, hWin, RealignPECheckBox
 					.if eax == BST_CHECKED
 						mov eax, dword ptr[OptionsArray]
 						mov dword ptr[eax], 1
