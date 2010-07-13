@@ -1,18 +1,10 @@
 ; $Id$
 
-;NSIS Modern User Interface
-;Multilingual Example Script
-;Written by Joost Verburg
-
-;--------------------------------
-;Include Modern UI
+;FUU v0.1.1 Installer
+;Written by +NCR/CRC! [ReVeRsEr]
 
   !include "MUI2.nsh"
 
-;--------------------------------
-;General
-
-  ;Name and file
   Name "FUU v0.1.1 Beta"
   OutFile "FUUv0.1.1b.exe"
 
@@ -28,21 +20,11 @@
   ;Request application privileges for Windows Vista
   RequestExecutionLevel user
 
-;--------------------------------
-;Interface Settings
-
   !define MUI_ABORTWARNING
 
-;--------------------------------
-;Language Selection Dialog Settings
-
-  ;Remember the installer language
   !define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
   !define MUI_LANGDLL_REGISTRY_KEY "Software\FUU v0.1.1b" 
   !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
-
-;--------------------------------
-;Pages
 
   !insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\FUU\LICENSE"
   !insertmacro MUI_PAGE_COMPONENTS
@@ -51,9 +33,6 @@
   
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
-
-;--------------------------------
-;Languages
 
   !insertmacro MUI_LANGUAGE "English" ;first language is the default language
   !insertmacro MUI_LANGUAGE "French"
@@ -111,18 +90,8 @@
   !insertmacro MUI_LANGUAGE "Afrikaans"
   !insertmacro MUI_LANGUAGE "Catalan"
   !insertmacro MUI_LANGUAGE "Esperanto"
-
-;--------------------------------
-;Reserve Files
-  
-  ;If you are using solid compression, files that are required before
-  ;the actual installation should be stored first in the data block,
-  ;because this will make your installer start faster.
   
   !insertmacro MUI_RESERVEFILE_LANGDLL
-
-;--------------------------------
-;Installer Sections
 
 Section "FUU v0.1.1b" MainFUUFiles
 
@@ -215,31 +184,18 @@ Section "Sample Plugin" Samples
 	
 SectionEnd
 
-;--------------------------------
-;Installer Functions
-
 Function .onInit
 
   !insertmacro MUI_LANGDLL_DISPLAY
 
 FunctionEnd
 
-;--------------------------------
-;Descriptions
-
-  ;USE A LANGUAGE STRING IF YOU WANT YOUR DESCRIPTIONS TO BE LANGAUGE SPECIFIC
-
-  ;Assign descriptions to sections
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
     !insertmacro MUI_DESCRIPTION_TEXT ${MainFUUFiles} "Main Files for FUU"
 	!insertmacro MUI_DESCRIPTION_TEXT ${Plugins} "FUU Unpacker Plugins"
 	!insertmacro MUI_DESCRIPTION_TEXT ${Tools} "Extra tools for FUU"
 	!insertmacro MUI_DESCRIPTION_TEXT ${Samples} "Sample Plugin for FUU"
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
-
- 
-;--------------------------------
-;Uninstaller Section
 
 Section "Uninstall"
 
@@ -253,9 +209,6 @@ Section "Uninstall"
   DeleteRegKey /ifempty HKCU "Software\FUU v0.1.1b"
 
 SectionEnd
-
-;--------------------------------
-;Uninstaller Functions
 
 Function un.onInit
 
