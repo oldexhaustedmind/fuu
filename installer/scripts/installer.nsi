@@ -15,7 +15,7 @@
   InstallDir "$PROGRAMFILES\FUU v0.1.1b"
   
   ;Get installation folder from registry if available
-  InstallDirRegKey HKCU "Software\FUU v0.1.1b" ""
+  InstallDirRegKey HKCU "Software\FUU" ""
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel user
@@ -23,7 +23,7 @@
   !define MUI_ABORTWARNING
 
   !define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
-  !define MUI_LANGDLL_REGISTRY_KEY "Software\FUU v0.1.1b" 
+  !define MUI_LANGDLL_REGISTRY_KEY "Software\FUU" 
   !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
   !insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\FUU\LICENSE"
@@ -116,7 +116,7 @@ Section "FUU v0.1.1b" MainFUUFiles
   File fuu.exe
   
   ;Store installation folder
-  WriteRegStr HKCU "Software\FUU v0.1.1b" "" $INSTDIR
+  WriteRegStr HKCU "Software\FUU" "" $INSTDIR
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -206,7 +206,7 @@ Section "Uninstall"
 
   RMDir "$INSTDIR"
 
-  DeleteRegKey /ifempty HKCU "Software\FUU v0.1.1b"
+  DeleteRegKey /ifempty HKCU "Software\FUU"
 
 SectionEnd
 
