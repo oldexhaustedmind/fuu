@@ -1,4 +1,5 @@
-; "$Id"
+; "$Id$"
+
 comment ~
  deExeFog! Unpacker for ExeFog! v1.x - LGPL 3.0
 
