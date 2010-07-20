@@ -547,7 +547,7 @@ ListaAFicheroListaDoble PROC Lista:DWORD,lpFile:DWORD,SobreEscribir:DWORD
 		assume esi: ptr NODOLISTADOBLE
 			mov eax,[esi].LpItem
 			mov Tam,eax
-		assume eax:NOTHING
+		assume esi:NOTHING
 		
 		invoke LocalAlloc,LMEM_ZEROINIT or LMEM_FIXED, Tam
 		mov lpItem,eax
