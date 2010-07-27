@@ -153,18 +153,18 @@ AuxList				PluginInfo 255 dup(<>)
 ;RealignPEFlag		dq 0
 
 
-hListBox			dq ?
-hCombo				dq ?
-fHandle				dq ?
-hUnpackButton		dq ?
-hList				dq ?
-hAuxList			dq ?
-hModule				dq ?
-hBlogLink			dq ?
-hEmailLink			dq ?
-CommandLine			dq ?
-hWnd				dq ?
-_lpItem				dq ?
+hListBox			dq 0
+hCombo				dq 0
+fHandle				dq 0
+hUnpackButton		dq 0
+hList				dq 0
+hAuxList			dq 0
+hModule				dq 0
+hBlogLink			dq 0
+hEmailLink			dq 0
+CommandLine			dq 0
+hMainHanlde			dq 0
+_lpItem				dq 0
 
 
 GlobalBuffer 		db 1024 dup(0)

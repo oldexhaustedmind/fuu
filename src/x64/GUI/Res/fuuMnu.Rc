@@ -13,7 +13,7 @@ BEGIN
   BEGIN
     MENUITEM "E&xit",IDM_FILE_EXIT
   END
-  POPUP "&Tools"
+  POPUP "&Tools",,,0x00000001
   BEGIN
     MENUITEM "Detect O&EP",IDM_TOOLS_DETECTOEP
     MENUITEM "Detect C&rypto Signatures",IDM_TOOLS_CRYPTSIGN

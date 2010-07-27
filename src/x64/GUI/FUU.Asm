@@ -45,6 +45,7 @@ include Hiperlink.inc
 
 include ..\External\funciones64.inc
 include ..\External\ListaDoble64.inc
+include CommunicationPlugin.inc
 
 
 
@@ -85,7 +86,8 @@ function DlgProc,hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	mov eax,uMsg
 	
 	@IF <<cmp eax,WM_INITDIALOG>>, EQUAL?
-		
+		mov rax,hWin
+		mov hMainHanlde,rax
 		invoke Init, hWin, uMsg, wParam, lParam
 		
 	@ELSEIF <<cmp eax,WM_DROPFILES>>,EQUAL?
@@ -415,10 +417,10 @@ function InitializeUnpacker,hWin:HWND,lpFileName:QWORD,CurrentSelection:QWORD
 	invoke GetItemByIndex,rax
 	
 	@AjustePila
-	sub rsp,8*5  
+	sub rsp,8*6 ; must be 16 bytes alignment  
     
     ;arg 1
-	mov rcx,hWin
+	lea rcx,ComunicationObject  ; Send a pointer to de Communicatin Plugin Object
 	;arg 2
 	mov rdx,lpFileName
 	;arg 3
@@ -431,7 +433,7 @@ function InitializeUnpacker,hWin:HWND,lpFileName:QWORD,CurrentSelection:QWORD
 	
 	call rax
 			
-   	add rsp,8*5
+   	add rsp,8*6
 	@ReAjustePila
 			
 exitf
