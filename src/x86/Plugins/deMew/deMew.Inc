@@ -17,10 +17,10 @@ LogMessage PROTO :DWORD
 GetSaveDialog PROTO
 GetMEWVersion PROTO
 Abort PROTO
-OEPLayer PROTO :DWORD
-OnOEP PROTO
 
 ; callbacks
+OEPLayer PROTO :DWORD
+OnOEP PROTO
 cbOnOEPLayer PROTO
 cbAnalyzePackerEntry PROTO
 
@@ -51,6 +51,7 @@ Mew5JumpPattern db 061h, 0E9h, 000h, 000h, 000h, 000h
 ; flags
 FileSaveFlag db 0
 IsMew10 db 0
+IsMew5 db 0
 
 ; imports section name
 MySection db ".fuu",0
@@ -86,7 +87,7 @@ PERealigned db "[+] PE file religned OK!", 0
 PERealignedFailed db "[!!!] PE realigned failed!", 0
 FileUnpackedSuccessfully db "[+] File unpacked successfully", 0
 DebugStoped db "[!] Process debug stoped", 0
-VirtualQueryFailed db "[!!!] VirtualQuery failed!", 0
+ReadProcessMemoryFailed db "[!!!] VirtualQuery failed!", 0
  
 .data?
 ofn OPENFILENAME <?>

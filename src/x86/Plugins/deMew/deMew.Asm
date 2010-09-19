@@ -260,8 +260,9 @@ cbAnalyzePackerEntry proc
 	
 	invoke GetMEWVersion
 	.if al == 5 ; MEW 5 (v0.1)
-		invoke LogMessage, addr Mew5Detected
+		mov IsMew5, 1
 		
+		invoke LogMessage, addr Mew5Detected
 		invoke GetContextData, UE_EIP
 		mov EIP, eax
 		
@@ -270,35 +271,47 @@ cbAnalyzePackerEntry proc
 		
 		mov edx, pi
 		
-		invoke VirtualQueryEx, dword ptr[edx + PROCESS_INFORMATION.hProcess], dword ptr[EIP], addr mi, sizeof MEMORY_BASIC_INFORMATION
-		mov edi, dword ptr[mi.BaseAddress]
-		add edi, dword ptr[mi.RegionSize]
+		mov ebx, dword ptr[EIP]
+		inc ebx
+		invoke ReadProcessMemory, dword ptr[edx + PROCESS_INFORMATION.hProcess], ebx, addr lpBuffer, 4, addr BytesWritten
 		
-		mov edx, pi
+		;invoke VirtualQueryEx, dword ptr[edx + PROCESS_INFORMATION.hProcess], dword ptr[EIP], addr mi, sizeof MEMORY_BASIC_INFORMATION
+		;mov edi, dword ptr[mi.BaseAddress]
+		;add edi, dword ptr[mi.RegionSize]
 		
-		invoke VirtualQueryEx, dword ptr[edx + PROCESS_INFORMATION.hProcess], dword ptr[EIP], addr mi, sizeof MEMORY_BASIC_INFORMATION
-		add edi, dword ptr[mi.RegionSize]
-		sub edi, esi
+		;mov edx, pi
 		
-		.if eax != NULL
+		;invoke VirtualQueryEx, dword ptr[edx + PROCESS_INFORMATION.hProcess], dword ptr[EIP], addr mi, sizeof MEMORY_BASIC_INFORMATION
+		;add edi, dword ptr[mi.RegionSize]
+		;sub edi, esi
 		
-			mov ebx, EIP
-			invoke Find, ebx, edi, addr Mew5JumpPattern, sizeof Mew5JumpPattern, addr WildCard
+		.if eax != 0
+		
+			mov eax, dword ptr[lpBuffer]
+			dec eax
 			
-			.if eax != NULL
-				add eax, 1
-				mov edx, pi
-				invoke GetJumpDestination, dword ptr[edx + PROCESS_INFORMATION.hProcess], eax
+			invoke SetHardwareBreakPoint, eax, 0, UE_HARDWARE_EXECUTE, UE_HARDWARE_SIZE_1, addr OnOEP
+			mov eax, TRUE
+			ret
+			
+			;mov ebx, EIP
+			;invoke Find, ebx, edi, addr Mew5JumpPattern, sizeof Mew5JumpPattern, addr WildCard
+			
+			;.if eax != NULL
+			;	add eax, 1
+			;	mov edx, pi
+			;	invoke GetJumpDestination, dword ptr[edx + PROCESS_INFORMATION.hProcess], eax
 				
-				.if eax != NULL
-					invoke SetHardwareBreakPoint, eax, 0, UE_HARDWARE_EXECUTE, UE_HARDWARE_SIZE_1, addr OnOEP
-					mov eax, TRUE
-					ret
-				.endif
-			.endif			 
+			;	.if eax != NULL
+			;		invoke SetHardwareBreakPoint, eax, 0, UE_HARDWARE_EXECUTE, UE_HARDWARE_SIZE_1, addr OnOEP
+			;		mov eax, TRUE
+			;		ret
+			;	.endif
+			;.endif			 
 		.else
-			invoke LogMessage, addr VirtualQueryFailed
-		.endif	
+			invoke LogMessage, addr ReadProcessMemoryFailed
+		.endif
+			
 	.elseif al == 10 ; MEW 10 (v1.0)
 		invoke LogMessage, addr Mew10Detected
 		mov IsMew10, 1
@@ -435,9 +448,15 @@ OnOEP proc
 	.if FileSaveFlag == 1
 		invoke RemoveAllBreakPoints, UE_OPTION_REMOVEALL
 		
-		invoke GetContextData, UE_EIP
-		mov OEP, eax
-	
+		.if IsMew5 == 1
+			invoke GetContextData, UE_EBX
+			mov OEP, eax
+		.else
+		
+			invoke GetContextData, UE_EIP
+			mov OEP, eax
+		.endif
+		
 		push OEP
 		push offset OEPFound
 		push offset TempBuffer
@@ -542,7 +561,7 @@ GetMEWVersion proc
 			mov wRet, 10
 		.elseif byte ptr[eax] == 0E9h
 			mov wRet, 11
-		.elseif byte ptr[eax] == 60h
+		.elseif word ptr[eax] == 5BBEh
 			mov wRet, 5
 		.else
 			mov wRet, 0
