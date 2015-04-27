@@ -1,0 +1,8 @@
+LIBRARY "DataExtractor"
+EXPORTS
+TitanResetPlugin
+TitanReleasePlugin
+TitanRegisterPlugin
+TitanDebuggingCallBack
+DataExtractorRipData
+DataExtractorRipDataW

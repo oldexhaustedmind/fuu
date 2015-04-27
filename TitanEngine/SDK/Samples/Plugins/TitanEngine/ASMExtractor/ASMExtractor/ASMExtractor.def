@@ -1,0 +1,8 @@
+LIBRARY "ASMExtractor"
+EXPORTS
+TitanResetPlugin
+TitanReleasePlugin
+TitanRegisterPlugin
+TitanDebuggingCallBack
+ASMExtractorRipDataW
+ASMExtractorRipData

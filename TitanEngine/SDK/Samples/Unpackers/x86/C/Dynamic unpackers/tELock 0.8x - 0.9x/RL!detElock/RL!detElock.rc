@@ -1,0 +1,108 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Englisch (USA) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+rlDialog DIALOGEX 0, 0, 255, 207
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_NOFAILCREATE | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_ACCEPTFILES
+CAPTION "[ tElock Unpacker ]"
+FONT 8, "Verdana", 0, 0, 0x1
+BEGIN
+    CONTROL         103,rlDisplayHeader,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,321,38
+    CTEXT           "RL!detElock unpacker by Reversing Labs",rlInfo,2,39,250,10,SS_SUNKEN | NOT WS_GROUP,WS_EX_STATICEDGE
+    LTEXT           "[Filename]",rlDisplayFileName,2,55,40,8
+    EDITTEXT        rlFilename,42,55,163,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "Browse",rlBrowse,210,53,40,14,BS_CENTER | BS_VCENTER
+    GROUPBOX        "Unpack execution messages",IDC_STATIC,2,72,250,112
+    LISTBOX         rlLog,5,81,243,75,LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    CONTROL         "Realign PE32 file [Recommended, but it can produce invalid files]",rlRealign,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,156,241,14
+    CONTROL         104,rlDisplayLogo,"Static",SS_BITMAP,5,192,46,9
+    PUSHBUTTON      "UnPack",rlUnpack,70,189,60,14,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "About",rlAbout,130,189,60,14
+    PUSHBUTTON      "Exit",rlExit,191,189,60,14
+    CONTROL         "Copy Overlay",rlOverlay,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,168,241,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+rlHeader                BITMAP                  "header.bmp"
+rlLogo                  BITMAP                  "logo.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+rlIcon                  ICON                    "mainicon.ico"
+#endif    // Englisch (USA) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

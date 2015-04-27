@@ -1,0 +1,10 @@
+LIBRARY "lynxImpRec"
+EXPORTS
+TitanResetPlugin
+TitanReleasePlugin
+TitanRegisterPlugin
+TitanDebuggingCallBack
+lynxImpRecExportTree
+lynxImpRecExportTreeW
+lynxImpRecLoadTree
+lynxImpRecLoadTreeW

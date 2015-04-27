@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LoaderSpy", "LoaderSpy\LoaderSpy.vcproj", "{1875E159-653C-4D63-B00B-8020B3B584BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1875E159-653C-4D63-B00B-8020B3B584BE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1875E159-653C-4D63-B00B-8020B3B584BE}.Debug|Win32.Build.0 = Debug|Win32
+		{1875E159-653C-4D63-B00B-8020B3B584BE}.Release|Win32.ActiveCfg = Release|Win32
+		{1875E159-653C-4D63-B00B-8020B3B584BE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

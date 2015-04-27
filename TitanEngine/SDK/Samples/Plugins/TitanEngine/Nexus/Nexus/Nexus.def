@@ -1,0 +1,6 @@
+LIBRARY "Nexus"
+EXPORTS
+TitanResetPlugin
+TitanReleasePlugin
+TitanRegisterPlugin
+TitanDebuggingCallBack
